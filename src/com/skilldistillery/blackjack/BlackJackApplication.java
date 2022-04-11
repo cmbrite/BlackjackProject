@@ -23,29 +23,31 @@ public class BlackJackApplication {
 		Hand dealer = new Hand();
 		Deck deck = new Deck();
 		deck.shuffle();
+		// Boolean added to end game on bust or winner
 		boolean bust = false;
 
 		// Deals user cards
 		user.addCard(deck.dealCard());
 		user.addCard(deck.dealCard());
-		// Sysout to show user cards
+		// Print user cards
 		System.out.println("Player hand" + user.toString() + " = " + user.getHandValue());
 
 		// Deals dealer cards
 		dealer.addCard(deck.dealCard());
 		dealer.addCard(deck.dealCard());
-		// Sysout to show dealer cards
-		System.out.println("Dealer hand" + dealer.toString() +  " = " + dealer.getHandValue());
+		// Print dealer cards
+		System.out.println("Dealer hand" + dealer.toString() + " = " + dealer.getHandValue());
 		String input;
-		
+
 		do {
 			System.out.println("Would you like to hit? Y/N");
 			System.out.println("Enter Y for another card or N to stand.");
 			input = sc.nextLine();
-			// If player chooses to hit
-			if(user.getHandValue() == 21) {
+			// TODO get this to end game without selecting stand
+			if (user.getHandValue() == 21) {
 				System.out.println(" BLACKJACK! You have won!");
 				bust = true;
+				// If player chooses to hit
 			}
 			if (input.equalsIgnoreCase("Y")) {
 				user.addCard(deck.dealCard());
@@ -62,10 +64,11 @@ public class BlackJackApplication {
 			// Dealer logic
 			if (user.getHandValue() < 22 && dealer.getHandValue() < 17) {
 				dealer.addCard(deck.dealCard());
-				System.out.println("Dealer drew another card to total " + dealer.getHandValue() + " " + dealer.toString());
+				System.out.println(
+						"Dealer drew another card to total " + dealer.getHandValue() + " " + dealer.toString());
 
 			}
-			if (dealer.getHandValue() > 16) {
+			if (dealer.getHandValue() > 16 && dealer.getHandValue() < 22) {
 				System.out.println("Dealer stands at " + dealer.getHandValue());
 
 			}
@@ -86,9 +89,11 @@ public class BlackJackApplication {
 		}
 		if (user.getHandValue() < 22 && dealer.getHandValue() > 22) {
 			System.out.println("Player wins this time!");
-		}
+		} // If dealer and player tie
 		if (dealer.getHandValue() == user.getHandValue()) {
 			System.out.println("Dealer push!");
 		}
+		// close scanner
+		sc.close();
 	}
 }
