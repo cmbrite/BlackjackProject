@@ -24,7 +24,6 @@ public class Hand {
 	}
 
 	
-	//Update toString for better output
 	@Override
 	public String toString() {
 		return " " + playerHand;
