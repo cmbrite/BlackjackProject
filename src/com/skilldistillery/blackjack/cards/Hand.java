@@ -27,7 +27,7 @@ public class Hand {
 	//Update toString for better output
 	@Override
 	public String toString() {
-		return "Hand [playerHand=" + playerHand + "]";
+		return " " + playerHand;
 	}
 	
 	

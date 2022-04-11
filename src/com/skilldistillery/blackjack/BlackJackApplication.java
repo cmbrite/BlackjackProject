@@ -20,8 +20,12 @@ public class BlackJackApplication {
 		user.addCard(deck.dealCard());
 		user.addCard(deck.dealCard());
 		//Sysout to test user cards
-//		System.out.println(user.toString());
+		System.out.println("Player hand" + user.toString());
 		
+		//Deals dealer cards
+		dealer.addCard(deck.dealCard());
+		dealer.addCard(deck.dealCard());
+		System.out.println("Dealer hand" + dealer.toString());
 		}
 	}
 
